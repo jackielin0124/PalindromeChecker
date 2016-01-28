@@ -15,13 +15,25 @@ public void setup()
   }
 }
 
+
 public boolean palindrome(String word)
 {
   //your code here
   String bob=new String();
   String lowerCase=new String(word.toLowerCase());
   String rewrote=new String();
-  
+
+  for(int i=0; i<lowerCase.length(); i++){
+    if(i==lowerCase.length()-1 && Character.isLetter(lowerCase.charAt(i)) == true){
+      rewrote=rewrote+lowerCase.substring(i);
+      break;
+    }
+
+    if(Character.isLetter(lowerCase.charAt(i)) == true){
+      rewrote=rewrote+lowerCase.substring(i, i+1);
+    }
+  }
+
   for(int i=lowerCase.length()-2; i>-1; i--){
     if(i==lowerCase.length()-2 && Character.isLetter(lowerCase.charAt(i+1))==true)
       bob=bob+lowerCase.substring(lowerCase.length()-1);
@@ -29,19 +41,9 @@ public boolean palindrome(String word)
       bob=bob+lowerCase.substring(i,i+1);
   }
 
-  for(int i=0; i<lowerCase.length(); i++){
-    if(i==lowerCase.length()-2 && Character.isLetter(lowerCase.charAt(i+1))==true)
-      rewrote=rewrote+lowerCase.substring(lowerCase.length()-1);
-    if(Character.isLetter(lowerCase.charAt(i)) == true)
-      rewrote=rewrote+lowerCase.substring(i,i+1);
-  }
-
-
-
-
-  System.out.println(bob);
   if(rewrote.equals(bob))
   return true;
+
   return false;
 }
 
